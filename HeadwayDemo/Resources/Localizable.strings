@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  HeadwayDemo
+*/
+
+"playerView.keyPoint" = "KEY POINT %@ OF %@";
+"playerView.playSpeed.button.title" = "Speed x%@";
+"chapter.one.keyPoint" = "The sky is blue.";
+"chapter.two.keyPoint" = "She enjoys reading mystery novels in her free time.";
+"chapter.three.keyPoint" = "Vibing with individuals with the same mindset, heartset, soulset, and healthset as you will influence your output, Vibing with individuals with the same mindset, heartset, soulset, and healthset as you will influence your output";
+"player.error.playerNotInitialized" = "Player not initialized";
+"player.error.failedToLoadFile" = "Failed to load file.";
+"player.error.failedToDecodeFile" = "Failed to decode file: %@";
+"player.error.failedToPlayToEnd" = "Failed to play to the end: %@";
+"player.error.playbackPaused" = "Playback paused";
+"player.error.unknownError" = "Unknown error";
+"player.error.failedToConfigureSession" = "Failed to configure session with: %@";
