@@ -39,6 +39,7 @@ struct BookSummaryView: View {
         .onAppear {
             store.send(.onAppear)
         }
+        .alert(store: self.store.scope(state: \.$errorAlert, action: \.alert))
     }
     
     var keyPointView: some View {

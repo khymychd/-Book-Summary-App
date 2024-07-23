@@ -38,6 +38,9 @@ struct BookSummaryFeature {
         }
         
         var hasError: Bool = false
+        
+        @Presents
+        var errorAlert: AlertState<Action.Alert>?
     }
     
     enum Action: Equatable {
@@ -63,6 +66,12 @@ struct BookSummaryFeature {
         
         case onAppear
         case errorOccurred(Player.AudioPlayerError)
+        
+        case closeAlert
+        
+        case alert(PresentationAction<Alert>)
+        
+        enum Alert: Equatable {}
     }
     
     enum PlaybackSpeed: Float, CaseIterable {
@@ -96,6 +105,8 @@ struct BookSummaryFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .alert:
+                return .none
             case .onAppear:
                 let result = player.configurePlayer()
                 switch result {
@@ -208,8 +219,15 @@ struct BookSummaryFeature {
                     )
             case .errorOccurred(let error):
                 state.hasError = true
-                debugPrint(error.description)
+                state.errorAlert = AlertState(
+                    title: { .init("errorAlert.title".localized)  },
+                    actions: { .cancel(.init("errorAlert.cancelTitle".localized))},
+                    message: { .init(error.description) }
+                )
                 return .cancel(id: CancelId.timer)
+            case .closeAlert:
+                state.errorAlert = nil
+                return .none
             }
         }
     }

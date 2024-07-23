@@ -15,3 +15,5 @@
 "player.error.playbackPaused" = "Playback paused";
 "player.error.unknownError" = "Unknown error";
 "player.error.failedToConfigureSession" = "Failed to configure session with: %@";
+"errorAlert.title" = "Error";
+"errorAlert.cancelTitle" = "Ok";
