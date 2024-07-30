@@ -157,10 +157,16 @@ struct BookSummaryFeature {
                 }
                 return .none
             case .gobackward:
-                player.skipBackward(5)
+                let value: Double = 5.0
+                player.skipBackward(value)
+                let newValue = max(0, state.currentTime - value)
+                state.currentTime = newValue
                 return .none
             case .goforward:
-                player.skipForward(10)
+                let value: Double = 10.0
+                player.skipForward(value)
+                let newValue = min(state.duration, state.currentTime + value)
+                state.currentTime = newValue
                 return .none
             case .forward:
                 if state.hasForward {
